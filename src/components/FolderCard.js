@@ -95,7 +95,7 @@ export default function FolderCard({ folder }) {
           </div>
           <div className="info-grid">
             <div className="info-item"><strong>{t('timeLeft')}</strong><span id={`time-left-${nextUp.id}`}>{isFull ? t('done') : formatTimeLeft(timeLeftMs)}</span></div>
-            <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${nextUp.id}`}>{isFull ? t('completedLabel') : (finishTimestamp ? formatFinishTime(finishTimestamp) : 'N/A')}</span></div>
+            <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${nextUp.id}`}>{isFull ? t('completedLabel') : (finishTimestamp ? formatFinishTime(finishTimestamp, state.language) : 'N/A')}</span></div>
           </div>
         </div>
       </>

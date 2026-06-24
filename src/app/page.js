@@ -54,6 +54,7 @@ export default function Home() {
 
   // Apply RTL for Arabic
   useEffect(() => {
+    document.documentElement.lang = state.language === 'pt-br' ? 'pt-BR' : state.language;
     if (state.language === 'ar') {
       document.body.setAttribute('dir', 'rtl');
     } else {

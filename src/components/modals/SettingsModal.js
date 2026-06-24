@@ -183,7 +183,7 @@ export default function SettingsModal() {
                 {langOpen && (
                   <div className="lang-dropdown-menu show" style={{ display: 'block' }}>
                     {Object.entries(langNames).map(([code, name]) => (
-                      <button key={code} className={`lang-option${state.language === code ? ' active' : ''}`} onClick={(e) => { e.stopPropagation(); saveLanguage(code); dispatch({ type: 'SET_LANGUAGE', payload: code === 'ar' ? 'en' : code }); setLangOpen(false); }}>
+                      <button key={code} className={`lang-option${state.language === code ? ' active' : ''}`} onClick={(e) => { e.stopPropagation(); saveLanguage(code); dispatch({ type: 'SET_LANGUAGE', payload: code }); setLangOpen(false); }}>
                         <span>{langFlags[code]}</span><span>{name}</span>
                         <svg className="lang-check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path></svg>
                       </button>

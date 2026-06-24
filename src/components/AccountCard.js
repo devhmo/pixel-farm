@@ -113,7 +113,7 @@ export default function AccountCard({ account, isNextUp = false }) {
         </div>
         <div className="info-grid">
           <div className="info-item"><strong>{t('timeLeft')}</strong><span id={`time-left-${account.id}`}>{isFull ? t('done') : formatTimeLeft(timeLeftMs)}</span></div>
-          <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${account.id}`}>{isFull ? (account.completionTime ? `${t('completedAt')} ${new Date(account.completionTime).toLocaleTimeString()}` : t('completedLabel')) : (finishTimestamp ? formatFinishTime(finishTimestamp) : 'N/A')}</span></div>
+          <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${account.id}`}>{isFull ? (account.completionTime ? `${t('completedAt')} ${new Date(account.completionTime).toLocaleTimeString()}` : t('completedLabel')) : (finishTimestamp ? formatFinishTime(finishTimestamp, state.language) : 'N/A')}</span></div>
         </div>
       </div>
     );
@@ -172,7 +172,7 @@ export default function AccountCard({ account, isNextUp = false }) {
       <div className="info-grid">
         <div className="info-item"><strong>{t('timeLeft')}</strong><span id={`time-left-${account.id}`}>{isFull ? t('done') : formatTimeLeft(timeLeftMs)}</span></div>
         <div className="info-item"><strong>{t('remaining')}</strong><span id={`remaining-${account.id}`}>{Math.max(0, capacity - currentPixels)}</span></div>
-        <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${account.id}`}>{isFull ? (account.completionTime ? `${t('completedAt')} ${new Date(account.completionTime).toLocaleTimeString()}` : t('completedLabel')) : (finishTimestamp ? formatFinishTime(finishTimestamp) : 'N/A')}</span></div>
+        <div className="info-item"><strong>{t('finishTime')}</strong><span id={`finish-time-${account.id}`}>{isFull ? (account.completionTime ? `${t('completedAt')} ${new Date(account.completionTime).toLocaleTimeString()}` : t('completedLabel')) : (finishTimestamp ? formatFinishTime(finishTimestamp, state.language) : 'N/A')}</span></div>
       </div>
       <div className="card-footer">
         <div className="footer-left">

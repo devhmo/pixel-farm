@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback, useRef } from 'react';
 import { DEFAULT_SETTINGS, PIXEL_INTERVAL } from '../lib/constants';
 import { translations } from '../lib/translations';
-import { migrateItem, findItem, findParentFolder, getAllAccounts, generateId } from '../lib/utils';
+import { migrateItem, findItem, findParentFolder, getAllAccounts, generateId, getAccountTimeLeftMs, getItemTimeLeftMs } from '../lib/utils';
 
 const AppContext = createContext(null);
 
@@ -132,7 +132,7 @@ export function AppProvider({ children }) {
         type: 'SET_STATE',
         payload: {
           theme: savedTheme,
-          language: savedLang === 'ar' ? 'en' : savedLang,
+          language: savedLang || 'en',
           settings: savedSettings,
           masterItems: savedItems,
         }
@@ -385,7 +385,6 @@ export function AppProvider({ children }) {
   }, [state.masterItems]);
 
   const sortItems = useCallback(() => {
-    const { getAccountTimeLeftMs, getItemTimeLeftMs } = require('../lib/utils');
     let items;
     if (state.currentView === 'main') {
       items = [...state.masterItems];

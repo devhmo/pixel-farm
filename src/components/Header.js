@@ -109,6 +109,11 @@ export default function Header() {
           {t('backToMain')}
         </button>
       )}
+      {state.currentView === 'main' && 'Notification' in window && Notification.permission !== 'granted' && (
+        <button id="enable-notifications-btn" className="btn btn-primary" onClick={() => { Notification.requestPermission().then(p => { if (p === 'granted' || p === 'denied') dispatch({ type: 'FORCE_UPDATE' }); }); }}>
+          {t('enableNotifications')}
+        </button>
+      )}
     </header>
   );
 }
