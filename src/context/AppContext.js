@@ -220,6 +220,10 @@ export function AppProvider({ children }) {
 
               // Play sound
               try {
+                const audio = document.getElementById('notification-sound');
+                if (audio) { audio.currentTime = 0; audio.play().catch(() => {}); }
+              } catch (e) {}
+              try {
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
@@ -230,6 +234,15 @@ export function AppProvider({ children }) {
                 osc.start();
                 osc.stop(ctx.currentTime + 0.2);
               } catch (e) {}
+
+              // Apply completed animation
+              setTimeout(() => {
+                const cardEl = document.querySelector(`.account-card[data-id="${account.id}"]`);
+                if (cardEl) {
+                  cardEl.classList.add('completed-animation');
+                  setTimeout(() => cardEl.classList.remove('completed-animation'), 1000);
+                }
+              }, 0);
             }
           }
         }

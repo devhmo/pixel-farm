@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="dark-mode force-desktop">
         <AppProvider>{children}</AppProvider>
+        <audio id="notification-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
       </body>
     </html>
   );
